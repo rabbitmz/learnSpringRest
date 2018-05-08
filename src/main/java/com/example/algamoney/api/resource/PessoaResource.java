@@ -59,7 +59,7 @@ public class PessoaResource {
 	
 	
 	@GetMapping("/{codigo}")
-	public ResponseEntity<Pessoa> findByCode(final Long code)
+	public ResponseEntity<Pessoa> findByCode(@PathVariable final Long code)
 	{
 		Optional<Pessoa> found = this.pessoaRepository.findById(code);
 		
@@ -67,7 +67,7 @@ public class PessoaResource {
 	}
 	
 	@GetMapping("/location/{codigo}")
-	public ResponseEntity<Endereco> findByPersonCode(final Long personCode)
+	public ResponseEntity<Endereco> findByPersonCode(@PathVariable final Long personCode)
 	{
 		Optional<Pessoa> found = this.pessoaRepository.findById(personCode);
 		
