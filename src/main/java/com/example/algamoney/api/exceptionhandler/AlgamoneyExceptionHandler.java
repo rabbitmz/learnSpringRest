@@ -49,6 +49,11 @@ public class AlgamoneyExceptionHandler extends ResponseEntityExceptionHandler {
 		return super.handleExceptionInternal(ex, Arrays.asList(new Erro("NO MESSSAGE", ex)), new HttpHeaders(), HttpStatus.NOT_FOUND, request);
 	}
 	
+	@ExceptionHandler({IllegalArgumentException.class})
+	public ResponseEntity<Object> handleIllegalArgumentException(IllegalArgumentException ex, WebRequest request)
+	{
+		return super.handleExceptionInternal(ex, Arrays.asList(new Erro("ILLEGAL VALUE",ex)), new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+	}
 	
 	private List<Erro> getErros(BindingResult bindingResult) {
 		List<FieldError> allErrors = bindingResult.getFieldErrors();
